@@ -91,6 +91,7 @@ Ends the assistant session
 
 # 🙌 Credits
 Developed with ❤️ by Me
+
 Uses:
 
 🔗 Together AI
