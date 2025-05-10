@@ -5,8 +5,40 @@ import webbrowser
 import os
 import datetime
 from together import Together
-import random
 from config import api_key
+
+chatStr = ""
+
+
+def chat(query):
+
+    # The function accesses a global variable chatStr, which is likely a string that stores the conversation history.
+    global chatStr
+
+    client = Together(
+        # This line creates an instance of the Together class, which is a client for the Together API.
+        api_key=api_key)
+
+    # The function appends the user's input (query) to the conversation history (chatStr) with a prefix "Divyam: " and a suffix " \n Jarvis".
+    chatStr += f"Divyam: {query} \n Jarvis"
+
+    # This line sends a request to the Together API to generate a completion for the given prompt.
+    response = client.chat.completions.create(
+
+        # The name of the model to use for generating the completion.
+        model="Qwen/Qwen3-235B-A22B-fp8-tput",
+        messages=[
+            {"role": "user", "content": chatStr}]
+    )
+
+    # The function prints the content of the first choice in the response from the API using the say function
+    say(response.choices[0].message.content)
+
+    # The function appends the response content to the conversation history (chatStr).
+    chatStr += response.choices[0].message.content
+
+    # The function returns the response content.
+    return response.choices[0].message.content
 
 
 def ai(prompt):
@@ -141,5 +173,9 @@ if __name__ == "__main__":
                 say("Goodbye")
                 exit()
                 break
+
+            else:
+                print("Chatting...")
+                chat(query)
 
 # say(query)

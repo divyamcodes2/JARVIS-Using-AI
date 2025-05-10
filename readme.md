@@ -89,7 +89,7 @@ Ends the assistant session
 ├── Answer/ # Stores AI-generated responses
 └── README.md # This file!
 
-🙌 Credits
+# 🙌 Credits
 Developed with ❤️ by Me
 Uses:
 
@@ -101,7 +101,9 @@ Uses:
 
 🌍 webbrowser, os, datetime, subprocess
 
-🧠 Final Thoughts
+# 🧠 Final Thoughts
+
+
 JARVIS is not just a script, it’s a talking assistant for your daily tasks!
 Try saying: “Open Google”, “Play music”, or “Using artificial intelligence write a poem” – and see the magic 🪄
 
