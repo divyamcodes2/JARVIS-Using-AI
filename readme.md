@@ -79,6 +79,10 @@ Uses the Together AI model to respond to your custom prompts
 Ends the assistant session  
 ➡️ Trigger phrase: “I want to exit”
 
+#### 🃏It can crack jokes
+
+Uses the official joke by google api to fetch jokes 
+➡️ Trigger phrase: “Tell me a joke”
 ---
 
 ## 📁 Project Structure
