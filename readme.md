@@ -83,6 +83,7 @@ Ends the assistant session
 
 Uses the official joke by google api to fetch jokes 
 ➡️ Trigger phrase: “Tell me a joke”
+
 ---
 
 ## 📁 Project Structure
