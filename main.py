@@ -6,6 +6,7 @@ import os
 import datetime
 from together import Together
 from config import api_key
+import requests
 
 chatStr = ""
 
@@ -118,6 +119,18 @@ def takeCommand():
             return "Some error occured"
 
 
+def tell_joke():
+    try:
+        url = "https://official-joke-api.appspot.com/random_joke"
+        response = requests.get(url)
+        joke_data = response.json()
+        joke = f"{joke_data['setup']} ... {joke_data['punchline']}"
+        say(joke)
+    except Exception as e:
+        say("Sorry, I couldn't fetch a joke right now.")
+        print("Error:", e)
+
+
 if __name__ == "__main__":
     say("I am jarvis AI")
     while True:
@@ -172,6 +185,10 @@ if __name__ == "__main__":
             if "i want to exit".lower() in query.lower():
                 say("Goodbye")
                 exit()
+                break
+
+            if "tell me a joke".lower() in query.lower():
+                tell_joke()
                 break
 
             else:
