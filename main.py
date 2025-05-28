@@ -7,6 +7,7 @@ import datetime
 from together import Together
 from config import api_key
 import requests
+import sys
 
 chatStr = ""
 
@@ -131,6 +132,23 @@ def tell_joke():
         print("Error:", e)
 
 
+def fetch_weather():
+    say("Enter a city: ")
+    city = takeCommand()
+    response = requests.request(
+        "GET", f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?unitGroup=us&key=N9JAEP2ZD6HYEC7WWYGYPBBKX&contentType=json")
+    if response.status_code != 200:
+        print('Unexpected Status code: ', response.status_code)
+        sys.exit()
+
+    jsonData = response.json()
+    description = jsonData["days"][0]["description"]
+    temperature = jsonData["days"][0]["temp"]
+
+    say(f"Description: {description}")
+    say(f"Temperature: {temperature}°F")
+
+
 if __name__ == "__main__":
     say("I am jarvis AI")
     while True:
@@ -189,6 +207,10 @@ if __name__ == "__main__":
 
             if "tell me a joke".lower() in query.lower():
                 tell_joke()
+                break
+
+            if "how is the weather".lower() in query.lower():
+                fetch_weather()
                 break
 
             else:

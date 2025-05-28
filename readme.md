@@ -84,6 +84,11 @@ Ends the assistant session
 Uses the official joke by google api to fetch jokes 
 ➡️ Trigger phrase: “Tell me a joke”
 
+#### ☁️ Forecast Weather 
+
+Uses the Visual Crossing Web Services 
+➡️ Trigger phrase: “How is the weather”
+
 ---
 
 ## 📁 Project Structure
