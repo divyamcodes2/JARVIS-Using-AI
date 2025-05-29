@@ -5,7 +5,7 @@ import webbrowser
 import os
 import datetime
 from together import Together
-from config import api_key
+from config import api_key, weather_key
 import requests
 import sys
 
@@ -136,7 +136,7 @@ def fetch_weather():
     say("Enter a city: ")
     city = takeCommand()
     response = requests.request(
-        "GET", f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?unitGroup=us&key=N9JAEP2ZD6HYEC7WWYGYPBBKX&contentType=json")
+        "GET", f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?unitGroup=us&key={weather_key}&contentType=json") # Make this api key private 
     if response.status_code != 200:
         print('Unexpected Status code: ', response.status_code)
         sys.exit()
