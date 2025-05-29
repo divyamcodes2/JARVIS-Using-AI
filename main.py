@@ -136,7 +136,7 @@ def fetch_weather():
     say("Enter a city: ")
     city = takeCommand()
     response = requests.request(
-        "GET", f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?unitGroup=us&key={weather_key}&contentType=json") # Make this api key private 
+        "GET", f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}?unitGroup=us&key={weather_key}&contentType=json") 
     if response.status_code != 200:
         print('Unexpected Status code: ', response.status_code)
         sys.exit()
@@ -144,6 +144,9 @@ def fetch_weather():
     jsonData = response.json()
     description = jsonData["days"][0]["description"]
     temperature = jsonData["days"][0]["temp"]
+
+    print(f"Description: {description}")
+    print(f"Temperature: {temperature}°F")
 
     say(f"Description: {description}")
     say(f"Temperature: {temperature}°F")
